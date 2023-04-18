@@ -1,3 +1,3 @@
-# ladyrayrays.github.io
+# aklabjan.github.io
 CS766 Website 
-By Daniel Finer and Bri Cochran
+By Ana Klabjan (aklabjan) , Poulami Paul (ppaul5) , Shubhankit Rathore (srathore2)
