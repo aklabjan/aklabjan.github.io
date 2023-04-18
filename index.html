@@ -1,15 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
-  </head>
-  <body>
-    <main>
-        <h1>Welcome to My Website</h1>  
-        <p>This is my new website which is hosted on GitHub Pages!</p>
-    </main>
-  </body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="Our CS766 final project" content="CS766 Project" />
+        <meta name="Daniel Finer and Bri Cochran" content="CS766 Project" />
+        <title>CS766 Project</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">Tomato Inspector</span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/tomatoes.jpeg" alt="..." /></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Title">Project Detials</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#TheProblem">The Problem</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Background">Background</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Method">Method</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Implementation">Implementation Details</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Results">Results</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Discussion">Discussion</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Resources">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#References">References</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- Title and Names-->
+            <section class="resume-section" id="Title">
+                <div class="resume-section-content">
+                    <h2 class="mb-0"><span class="text-primary">Tomato</span> Growth Stage Detection</h2>
+                    <p class="lead mb-5">
+                        By Daniel Finer and Bri Cochran
+                    </p>
+                    <p class="lead mb-5"> For CS 766</p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- TheProblem-->
+            <section class="resume-section" id="TheProblem">
+                <div class="resume-section-content">
+                    <h2 class="mb-0">
+                        The
+                        <span class="text-primary">Problem</span>
+                    </h2>
+                    <p class="lead mb-5">The problem we are trying to solve is identifying a tomato in an image and then determining the ripeness of
+                        the detected tomato.</p>
+                    <h3 class="mb-0">
+                        Motivation
+                    </h3>
+                    <p class="lead mb-5">The problem of identifying produce and then determining the ripeness is important in many fields.
+                        For starters looking at the agriculture market, this process can be used in a production line to determine if batches of  a 
+                        certain produce are not fit to be sold. For example when putting tomatoes in a plastic container that will be 
+                        be sent to stores. If it could be determined that said tomatoes were far too ripe, they could be discarded early. This fixes the issue 
+                        of a package of tomatoes arriving at a store with the majority of them already starting to rot or having a very short shelf life. Thus
+                        saving the store capital from tomatoes experiing too fast. 
+                        <br><br>
+                        Another area this problem is important to, is the field of accessibility. Individuals who cannot rely on their sight face the issue of
+                        determining if food has gone bad, oftentimes they rely on smell and touch. The ability to take a photo of produce and identify if
+                        it’s safe to eat is a useful tool. Considering there are already other accessibility tools that allow those with impairments to
+                        take images of something to determine what is. The ability to determine ripeness of produce would be a nice addition in making lives of those who 
+                        have impairments easier.
+                        <br><br>
+                        The solution to this problem is also relevent to your average person. Someone who is out shopping for produce and is not well
+                        versed in the ripe stages of the produce can use our solution to determine which/when to buy. This could be used to help those who are growing
+                        their own produce to help with harvesting them as well. 
+                        <br><br>
+                        Overall, this problem is interesting, because it solves practical problems for those in everyday life and those in the marketplace.
+
+                        
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Background-->
+            <section class="resume-section" id="Background">
+                <div class="resume-section-content">
+                    <h2 class="mb-0">Background</h2>
+                    <p class="lead mb-5">General quality control applications of computer vision are present throughout the agricultural industry today.
+                       There are large systems in  agricultural settings that are leveraging computer vision for sorting size, quality, 
+                       and ripeness of produce. In many of these large scale cases they are looking at some basic shape/color information. 
+                       In contrast on the less industrial side of things there have been some developments for monitoring food quality in a grocery 
+                       setting or on an even smaller scale there has been some smartphone integration for specific evaluations. One example of this is
+                       Amazon Fresh’s ‘Just Walk Out’ technology that uses computer vision to track grocery items taken. In regards to recent publications 
+                       there have been some recent papers of interest that leverage convolutional neural networks (sometimes pre-trained) to classify
+                       images of certain varieties of produce.[1,2] Other state-of-the-art technologies include:
+                       <ul>
+                           <li>Magnetic resonance imaging [5]</li>
+                           <li>Laser-scattering imaging [6]</li>
+                           <li>Infrared imaging [7]</li>
+                        </ul>                    
+                    </p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Method-->
+            <section class="resume-section" id="Method">
+                <div class="resume-section-content">
+                    <h2 class="mb-0">Method</h2>
+                    <p class="lead mb-5">We explored the utilization of a convolutional neural network to assist with quality/ripeness classification in contrast to 
+                        existing Feed-Forward Approaches[10]. In particularly, we chose a CNN model to evaluate how well a purely visual system could work.
+                        In order to train this model we tried to identify an existing image dataset with sufficient data samples. 
+                        For insights and examples we explored a text 
+                        through the university library system that aligns with this project.[3] For feasibility, the potential traits we
+                        were focused on for identification were color and shape. </p>
+
+                        <h3 class="mb-0">Dataset</h3>
+                        <p class="lead mb-5">The dataset we used was the Real-world Tomato Image Dataset for Deep Learning and Computer Vision Applications 
+                        Involving Precision Agriculture which had a great deal of benefits.[8] This data set contains roughly 1,750 images of tomatos in various on the vine 
+                        stages of growth. We then manually labeled each image through a Matlab script and
+                        downscaled the resolution by a factor of 100 as the images were too large to process in an efficient manner. An image could be labeled with any
+                        of the following: (1)blossom/bud; (3)beginning to ripen(green/yellow); (3)ripe(orange/red).
+                        </p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Implementation-->
+            <section class="resume-section" id="Implementation">
+                <div class="resume-section-content">
+                    <h2 class="mb-0">Implementation Details</h2>
+                    <p class="lead mb-5">
+                        As previously mentioned our approach to this problem was to implement a Convolutional Neural Network image classifier trained on the data set 
+                        we obtained, labeled, and augmented. We decided on utilizing a CNN due to their utility in image classification, which differs from
+                        other work has been done utilizing Feed-Forward Neural Networks[10]. Beyond the introduction to neural networks in lecture we leveraged the Python
+                        library TensorFlow as our means of implementing the CNN classifier and got acquainted with the framework via a tutorial[11]. The data set was split into 
+                        training, validation, and test subsets. The training and validation data sets were each used to refine the CNN model which was then compared
+                        against the held out testing data set. After evaluating the test accuracy the model's hyper-parameters such as train-test split, number and
+                        size of convolutional layers, and epoch count were varied and the resulting models test accuracy was compared to the previous. After several iterations
+                        we settled on a set of hyper-parameters that gave us satisfactory performance. In addition to measuring the test accuracy, a sampling of misclassifications 
+                        was taken at each iteration and qualitatively judged to see if we would expect the images to be reasonablly between multiple classes. The code 
+                        that was used for annotation and classification can be found in the resources section.
+                        
+                    </p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Results-->
+            <section class="resume-section" id="Results">
+                <div class="resume-section-content">
+                    <h2 class="mb-0">Results</h2>
+                    <p class="lead mb-5">
+                        Overall, our latest trained model was able to achieve <strong>90.53%</strong> test accuracy on images held out during training/validation.
+                        Below are some selected examples of test images that were misclassified and the associated correct/incorrect labels. Additionally, in Figure 1
+                        we can see that the confusion matrix has little to no errors identified between the first and third classes. This would suggest that most of 
+                        the classification errors may arise from border/transitory cases between the classes.
+                    </p>
+                    
+                    <div>Image 1.
+                        <img src="./assets/img/misclass_1.png" alt="Misclassification 1">
+                    </div>
+                    
+                    <div>Image 2.
+                        <img src="./assets/img/misclass_2.png" alt="Misclassification 2">
+                    </div>
+
+                    <div>Image 3.
+                        <img src="./assets/img/misclass_3.png" alt="Misclassification 3">
+                    </div>
+
+                    <img src="./assets/img/conf_mat.png" alt="Confusion Matrix">
+                    <div>Figure 1. Confusion matrix between the three classes in the test data set.</div>
+
+                    
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Discussion-->
+            <section class="resume-section" id="Discussion">
+                <div class="resume-section-content">
+                    <h2 class="mb-0">Discussion</h2>
+                    <h3 class="mb-0">Challenges & Lessons</h3>
+                    <p class="lead mb-5"> 
+                        Overall, we are satisfied with the performance we were able to achieve on image classification. Some of the main take aways we had from this project 
+                        inluded the exploration into CNN functionality and implementation. One problem we encountered was the limited data set size which lead to poor 
+                        convergence. To address this we augmented the data set utlizing image transformations (specifically rotation and mirroring). Another issue
+                        that was encountered was the cases were multiple classes could be identified within an image as previously mentioned. With our fixed labeling
+                        strategy of an image only belonging to one class we were unable to address this, but it might be an oppurtunity for future work.
+                    </p>
+                    <p class="lead mb-5">
+                        Beyond improvements in accuracy,
+                        there a few ways we can consider building future work upon this project. Once a data set is currated we can consider additional classification
+                        goals such as being able to identify damaged, diseased, or overripe classes. We could extend this to classification between different tomato
+                        varieties. Beyond this, we could even consider applying these techniques to other forms of produce such as strawberries or bananas. Additionally,
+                        we could work on integrating non-visual data to be used in conjunction with the image data such as the technologies identified in the Background
+                        section.
+                    </p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Resources-->
+            <section class="resume-section" id="Resources">
+                <div class="resume-section-content">
+                    <h2 class="mb-0">Resources</h2>
+                    <ul class="lead mb-5">
+                        <li>
+                            <a href="https://drive.google.com/drive/folders/1xuNO52F8fC1eozGmujBlRK2z-yAQsf6O?usp=sharing">Annotation/Classification Code</a>
+                        </li>
+                        <li>
+                            <a href="https://docs.google.com/presentation/d/1EqZvPVt7oMvXMxEGPtK4U5MUzi_V8G_ShqTcpjnI0OE/edit?usp=sharing">Presentation</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <!-- References-->
+            <section class="resume-section" id="References">
+                <div class="resume-section-content">
+                    <h2 class="mb-0">References</h2>
+                    <ol class="lead mb-5">
+                        <li>
+                            M. F. Mohamedon, F. Abd Rahman, S. Y. Mohamad and O. Omran Khalifa, "Banana Ripeness Classification Using 
+                            Computer Vision-based Mobile Application," 2021 8th International Conference on Computer and Communication 
+                            Engineering (ICCCE), 2021, pp. 335-338, doi: 10.1109/ICCCE50029.2021.9467225.
+
+                        </li>
+                        <li>
+                            M. Halstead, C. McCool, S. Denman, T. Perez and C. Fookes, "Fruit Quantity and Ripeness Estimation Using a 
+                            Robotic Vision System," in IEEE Robotics and Automation Letters, vol. 3, no. 4, pp. 2995-3002, Oct. 2018, 
+                            doi: 10.1109/LRA.2018.2849514.
+                        </li>
+                        <li>
+                            Sun, D.-W. (2016). Computer Vision Technology for Food Quality Evaluation. Elsevier. 
+                        </li>
+                        <li>
+                            M Math, RajinderKumar; V. Dharwadkar, Dr. Nagaraj (2020), “Real-world Tomato Image Dataset for Deep Learning
+                            and Computer Vision Applications Involving Precision Agriculture”, Mendeley Data, V1, doi: 10.17632/9zyvdgp83m.1
+                        </li>
+                        <li>
+                            Zhang, L., &amp; McCarthy, M. J. (2012). Measurement and evaluation of tomato maturity using magnetic resonance imaging. 
+                            Postharvest Biology and Technology, 67, 37–43. https://doi.org/10.1016/j.postharvbio.2011.12.004 
+                        </li>
+                        <li>
+                            Tu, K., Jancsok, P., Nicolai, B., &amp; De Baerdemaeker, J. (2000). Use of laser-scattering imaging to study tomato-fruit 
+                            quality in relation to acoustic and compression measurements. International Journal of Food Science and Technology, 35(5), 
+                            503–510. https://doi.org/10.1046/j.1365-2621.2000.00407.x 
+                        </li>
+                        <li>
+                            Akibumi, D., Mitsuru, M., &amp; Etsuji, I. (2002). Quality parameters of fresh-cut fruit and vegetable products. Fresh-Cut 
+                            Fruits and Vegetables, 23–32. https://doi.org/10.1201/9781420031874-4 
+                        </li>
+                        <li>
+                            M Math, RajinderKumar; V. Dharwadkar, Dr. Nagaraj (2020), “Real-world Tomato Image Dataset for Deep Learning and Computer 
+                            Vision Applications Involving Precision Agriculture”, Mendeley Data, V1, doi: 10.17632/9zyvdgp83m.1
+                        </li>
+                        <li>
+                            Gastélum Barrios, Abraham & Bórquez, Rafael & Rico-García, Enrique & Toledano-Ayala, Manuel & Soto-Zarazúa, Genaro. (2011). 
+                            Tomato quality evaluation with image processing: A review. African Journal of Agricultural Research. 6. 
+                        </li>
+                        <li>
+                            Arakeri, M. P., &amp; Lakshmana. (2016). Computer Vision based fruit grading system for quality evaluation of Tomato in 
+                            agriculture industry. Procedia Computer Science, 79, 426–433. https://doi.org/10.1016/j.procs.2016.03.055 
+                        </li>
+                        <li>
+                            <a href="https://www.tensorflow.org/tutorials/images/classification">TensorFlow Image Classification Tutorial</a>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+            <hr class="m-0" />
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
 </html>
