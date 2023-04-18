@@ -29,9 +29,9 @@
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Title">Project Detials</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Title">Project Details</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#TheProblem">The Problem</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Background">Background</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Dataset">Dataset</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Method">Method</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Implementation">Implementation
                         Details</a></li>
@@ -97,30 +97,20 @@
             </div>
         </section>
         <hr class="m-0" />
-        <!-- Background-->
-        <section class="resume-section" id="Background">
+        <!-- Dataset-->
+        <section class="resume-section" id="Dataset">
             <div class="resume-section-content">
-                <h2 class="mb-0">Background</h2>
-                <p class="lead mb-5">General quality control applications of computer vision are present throughout the
-                    agricultural industry today.
-                    There are large systems in agricultural settings that are leveraging computer vision for sorting
-                    size, quality,
-                    and ripeness of produce. In many of these large scale cases they are looking at some basic
-                    shape/color information.
-                    In contrast on the less industrial side of things there have been some developments for monitoring
-                    food quality in a grocery
-                    setting or on an even smaller scale there has been some smartphone integration for specific
-                    evaluations. One example of this is
-                    Amazon Fresh’s ‘Just Walk Out’ technology that uses computer vision to track grocery items taken. In
-                    regards to recent publications
-                    there have been some recent papers of interest that leverage convolutional neural networks
-                    (sometimes pre-trained) to classify
-                    images of certain varieties of produce.[1,2] Other state-of-the-art technologies include:
-                <ul>
-                    <li>Magnetic resonance imaging [5]</li>
-                    <li>Laser-scattering imaging [6]</li>
-                    <li>Infrared imaging [7]</li>
-                </ul>
+                <h2 class="mb-0">Dataset</h2>
+                <p class="lead mb-5">For this project, we were unable to find an already existing dataset. Therefore, we
+                    will be creating our own dataset for the training \& testing of model from Google Images. To create
+                    the training \& testing set we will pull 500-1000 images from Google Images for each of our four
+                    herb types: parsley, thyme, chives, and oregano, and split the set into 90\% and 10\% to train \&
+                    test. \medskip
+                    <br><br>
+                    For the final test set we will be pulling 20-30 images of herb gardens. We will manually label these
+                    images to test the prediction of our trained model in presence of multiple herbs in a single image.
+                    Our main goal is to segment these herb garden images to segment into different herb-leaves region
+                    and then predict their type in the image and label them.
                 </p>
             </div>
         </section>
