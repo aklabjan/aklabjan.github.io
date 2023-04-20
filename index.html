@@ -21,8 +21,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
             <span class="d-block d-lg-none">Herb Leaf Classification System</span>
-            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
-                    src="assets/img/tomatoes.jpeg" alt="..." /></span>
+            <!-- <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
+                    src="assets/img/tomatoes.jpeg" alt="..." /></span> -->
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
@@ -195,8 +195,8 @@
                     the herb names in our test images as we believe it has potential for our model to incorrectly learn
                     the name of the plants instead of the leafs identifying feature. The major goal of our project is to
                     take an herb garden where you don't know what is what and label it, therefore in the pre-processing
-                    of the test images we blurred out any identifying labels of the herbs in the image. Any text/labels
-                    were removed from images using Keras_ocr and cv2 API. The removal of text will be referred as Stage
+                    of the test images we blurred out any identifying labels of the herbs in the image. The removal of
+                    text will be referred as Stage
                     1.
                     <br><br>
                     The image is then converted to black and white then processed with regionprop.
@@ -223,14 +223,23 @@
         <!-- Stage 1-->
         <section class="resume-section" id="Stage1">
             <div class="resume-section-content">
-                <h2 class="mb-0">Stage 1</h2>
-                <img src="./assets/img/annotate.png" alt="Example image of stage two output.">
+                <h2 class="mb-0">Stage 1: Blurring Text[4]</h2>
+                <img src="./assets/img/input.png" alt="Original Image">
                 <div>Stage 1 Input</div>
                 <p class="lead mb-5">
-                    TO DO
+                    In order to erase text from images we will go through three steps:
+
+                    ol>
+                    <li>Identify text in the image and obtain the bounding box coordinates of each text, using
+                        Keras-ocr.</li>
+                    <li>For each bounding box, apply a mask to tell the algorithm which part of the image we should
+                        inpaint.</li>
+                    <li>Apply an inpainting algorithm to inpaint the masked areas of the image, resulting in a text-free
+                        image, using cv2.</li>
+                    </ol>
                 </p>
-                <img src="./assets/img/annotate.png" alt="Example image of stage two output.">
-                <div>Stage 2 Output</div>
+                <img src="./assets/img/noWordsOutput.png" alt="Image with all text Blurried">
+                <div>Stage 1 Output</div>
             </div>
         </section>
         <hr class="m-0" />
@@ -317,6 +326,13 @@
                                 Features Using Deep Learning.”</span> <em>IEEE Access</em> 8: 196747–64.
                             <a
                                 href="https://doi.org/10.1109/ACCESS.2020.3034033">https://doi.org/10.1109/ACCESS.2020.3034033</a>.
+                        </div>
+                    </li>
+                    <li>
+                        <div id="ref-9239938" class="csl-entry" role="doc-biblioentry">
+                            "Remove Text from Images Using cv2 and Keras-ocr." <em>Towards Data Science</em>. Accessed
+                            April 19, 2023. <a
+                                href="https://towardsdatascience.com/remove-text-from-images-using-cv2-and-keras-ocr-24e7612ae4f4">https://towardsdatascience.com/remove-text-from-images-using-cv2-and-keras-ocr-24e7612ae4f4</a>.
                         </div>
                     </li>
                 </ol>
