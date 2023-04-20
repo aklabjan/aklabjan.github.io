@@ -11444,3 +11444,23 @@ section.resume-section .resume-section-content {
     padding-bottom: 5rem;
   }
 }
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container > div {
+  margin: 10px;
+  text-align: center;
+}
+
+.image-container img {
+  display: block;
+  margin: 0 auto;
+}
+
+.image-container div {
+  margin-top: 5px;
+}
