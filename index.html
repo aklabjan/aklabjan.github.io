@@ -33,7 +33,7 @@
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#TheProblem">The Problem</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#StateOfTheArt">Current State Of The
                         Art</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Method">Method</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Approach">Our Approach</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Implementation">Implementation
                         Details</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Results">Results</a></li>
@@ -48,7 +48,7 @@
         <!-- Title and Names-->
         <section class="resume-section" id="Title">
             <div class="resume-section-content">
-                <h2 class="mb-0"><span class="text-primary">Herb Leaf</span>Classification System</h2>
+                <h2 class="mb-0"><span class="text-primary">Herb Leaf </span>Classification System</h2>
                 <p class="lead mb-5">
                     By Ana Klabjan, Poulami Paul and Shubhankit Rathore
                 </p>
@@ -128,10 +128,28 @@
         </section>
         <hr class="m-0" />
         <!-- Method-->
-        <section class="resume-section" id="Method">
+        <section class="resume-section" id="Approach">
             <div class="resume-section-content">
-                <h2 class="mb-0">Method</h2>
-                <p class="lead mb-5"> TO DO </p>
+                <h2 class="mb-0">Our Approach</h2>
+                <p class="lead mb-5">Our project intends to expand on the current state-of-the-art. The research for
+                    identifying an individual leaf from nature has already been conducted, and our project expands on
+                    it. However, we have not found any studies that take an image of numerous plants and segment the
+                    image to locate each individual plant. Each segmented plant would then be fed into an identification
+                    model, similar to the pre-existing ones. 
+                    <br><br>
+                    For plant segmentation, we have developed our own approach. Firstly, we will identify the center of
+                    each individual plant and annotate it on the original image. To do this, we will convert the herb
+                    garden image to grayscale, compute the edges/boundaries, perform some noise removal, and then
+                    identify each individual plant and the coordinates of its center.
+                    <br><br>
+                    We plan to use the center coordinates of each plant to segment the image into sub-images that will
+                    then be fed into our identification model. Currently, the approach we plan to use to extract the
+                    sub-images is to take the plant center, create a box around it, and extract the pixels in the
+                    surrounding box as a new image. Finally, these segmented image for identified plants would be sent
+                    to the classification model to predict the type of plant. Each image will then be labelled as one of
+                    the possible plants as discussed previously, or unidentifiable herb if the confidence score for the
+                    prediction is lower than a pre-determined threshold.
+                </p>
 
                 <h3 class="mb-0">Dataset</h3>
                 <p class="lead mb-5">For this project, we were unable to find an already existing dataset. Therefore, we
@@ -153,7 +171,17 @@
             <div class="resume-section-content">
                 <h2 class="mb-0">Implementation Details</h2>
                 <p class="lead mb-5">
-                    TO DO
+                    Since starting the project we have stayed on schedule with our timeline of events. We programmed a script that extracted 240 images from google for each of the four classes, parsley, thyme, chives, and oregano. The images were preprocessed to 224 by 224 and split into train/test sets. The train set was then used to train a \textit{MobileNet} model with a custom output layer. The model has a ~95\% accuracy on the test set. \medskip
+                    <br><br>
+The caveat with this approach is that we have not manually inspected the dataset of images, therefore our model may have some misrepresented images. For example, when looking at the labeled images for parsley you will find some that are an image of prepackages dried parsley including the text "Parsley". We believe this error in our dataset might be causing our model to overfit, potentially affecting negatively on the ability to correctly identify the plant after segmentation in the future. This is something we will have to revisit once we start feeding the segmented image into the model. \medskip
+<br><br>
+22 images were then extracted from Instagram to use as the test set for the image segmentation. Instagram was used as it was a reliable method to get test images that best resemble being taken from a natural environment with a normal phone camera. For labeling purposes we choose images that included the gardener labeling the plants, this eliminated the need for the three of us, who are not herb experts from misidentifying the plants. This once again leads to the caveat that we don't want the herb names in our test images as we believe it has potential for our model to incorrectly learn the name of the plants instead of the leafs identifying feature. The major goal of our project is to take an herb garden where you don't know what is what and label it, therefore in the pre-processing of the test images we will be blurring out any identifying labels of the herbs in the image. To do this we are using the keras\_ocr and cv2 API. This was the stage-1 and has been completed.\medskip
+<br><br>
+<div>Stage 2 Output:
+    <img src="./assets/img/annotate.png" alt="Example image of stage two output.">
+</div>
+<br><br>
+This leads to stage 3 which is currently under execution.  Stage-3 will encompass the major task of locating the approximate true center of each plant using the points found in stage-2. A filter needs to be applied for the removal of outlier points in the image and then we will tentatively use k-means for locating the true center for each of the cluster of points which represents a plant.
                 </p>
             </div>
         </section>
@@ -166,8 +194,8 @@
                     TO DO
                 </p>
 
-                <div>Image 1.
-                    <img src="./assets/img/misclass_1.png" alt="Misclassification 1">
+                <div>Stage 2 Output:
+                    <img src="./assets/img/annotate.png" alt="Example image of stage two output.">
                 </div>
 
                 <div>Image 2.
