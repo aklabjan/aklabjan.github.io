@@ -35,8 +35,8 @@
                         Art</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Approach">Our Approach</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Implementation">Implementation
-                        Details</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Results">Results</a></li>
+                        Overview</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Stages">Indepth Walk Through</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Discussion">Discussion</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Resources">Resources</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#References">References</a></li>
@@ -169,13 +169,13 @@
         <!-- Implementation-->
         <section class="resume-section" id="Implementation">
             <div class="resume-section-content">
-                <h2 class="mb-0">Implementation Details</h2>
+                <h2 class="mb-0">Implementation Overview</h2>
                 <p class="lead mb-5">
-                    Since starting the project we have stayed on schedule with our timeline of events. We programmed a
-                    script that extracted 240 images from google for each of the four classes, parsley, thyme, chives,
+                    We programmed a script that extracted 240 images from google for each of the four classes, parsley,
+                    thyme, chives,
                     and oregano. The images were preprocessed to 224 by 224 and split into train/test sets. The train
                     set was then used to train a <i>MobileNet</i> model with a custom output layer. The model has a
-                    ~95% accuracy on the test set. 
+                    ~95% accuracy on the test set.
                     <br><br>
                     The caveat with this approach is that we have not manually inspected the dataset of images,
                     therefore our model may have some misrepresented images. For example, when looking at the labeled
@@ -193,9 +193,19 @@
                     the herb names in our test images as we believe it has potential for our model to incorrectly learn
                     the name of the plants instead of the leafs identifying feature. The major goal of our project is to
                     take an herb garden where you don't know what is what and label it, therefore in the pre-processing
-                    of the test images we will be blurring out any identifying labels of the herbs in the image. To do
-                    this we are using the keras_ocr and cv2 API. This was the stage-1 and has been completed.
+                    of the test images we blurred out any identifying labels of the herbs in the image. Any text/labels
+                    were removed from images using Keras_ocr and cv2 API. The removal of text will be referred as Stage
+                    1.
                     <br><br>
+                    The image is then converted to black and white then processed with regionprop.
+                    annotated with the center of
+                    each herb using . This feature implementation is currently in
+                    progress, broken down into several stages. Stage two
+                    has been completed, converting the images to black and
+                    white, the connected components are labeled and lastly
+                    the center of each component is computed. When anno-
+                    tating these centers on the images we find that there tends
+                    to be clusters of ”centers” around each plant
                 <div>Stage 2 Output:
                     <img src="./assets/img/annotate.png" alt="Example image of stage two output." width="500">
                 </div>
@@ -208,10 +218,10 @@
             </div>
         </section>
         <hr class="m-0" />
-        <!-- Results-->
-        <section class="resume-section" id="Results">
+        <!-- Stages-->
+        <section class="resume-section" id="Stages">
             <div class="resume-section-content">
-                <h2 class="mb-0">Results</h2>
+                <h2 class="mb-0">Indepth Walk Through</h2>
                 <p class="lead mb-5">
                     TO DO
                 </p>
