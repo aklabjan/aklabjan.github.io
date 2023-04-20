@@ -39,7 +39,7 @@
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Stage1">Stage 1</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Stage2">Stage 2</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Stage3">Stage 3</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Discussion">Discussion</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Improvements">Improvements</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Resources">Resources</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#References">References</a></li>
             </ul>
@@ -198,23 +198,15 @@
                     of the test images we blurred out any identifying labels of the herbs in the image. The removal of
                     text will be referred as Stage 1.
                     <br><br>
-                    The image is then converted to black and white then processed with regionprop.
-
-                    annotated with the center of
-                    each herb using . This feature implementation is currently in
-                    progress, broken down into several stages. Stage two
-                    has been completed, converting the images to black and
-                    white, the connected components are labeled and lastly
-                    the center of each component is computed. When anno-
-                    tating these centers on the images we find that there tends
-                    to be clusters of ”centers” around each plant
+                    In stage 2 the image is then proccessed to create a dataset of object centers. During this stage
+                    noise is removed from the image and then the object centers are annotated onto an image. When
+                    annotating these centers on the images we find that there tends to be clusters of ”centers” around
+                    each plant.
                     <br><br>
-                    This leads to stage 3 which is currently under execution. Stage-3 will encompass the major task of
-                    locating the approximate true center of each plant using the points found in stage-2. A filter needs
-                    to
-                    be applied for the removal of outlier points in the image and then we will tentatively use k-means
-                    for
-                    locating the true center for each of the cluster of points which represents a plant.
+                    Stage-3 will encompasses the major task of locating the approximate true center of each plant using
+                    the points found in stage-2. A filter needs
+                    to be applied for the removal of outlier points in the image and then we will tentatively use
+                    k-means for locating the true center for each of the cluster of points which represents a plant.
                 </p>
             </div>
         </section>
@@ -224,7 +216,7 @@
             <div class="resume-section-content">
                 <h2 class="mb-0">Stage 1: Blurring Text</h2>
                 <p class="lead mb-5">
-                    In order to erase text from images we will go through three steps:[4]
+                    Each image will go through three steps to blurr any text:[4]
                 <ol>
                     <li>Identify text in the image and obtain the bounding box coordinates of each text, using
                         Keras-ocr.</li>
@@ -252,20 +244,22 @@
             <div class="resume-section-content">
                 <h2 class="mb-0">Stage 2: Annotate "Centers"</h2>
                 <p class="lead mb-5">
-                    In order to annotate the centers of plants in an image, we will go through four steps:
+                    The image will be processed to create a dataset of object centers to be processed in Stage 3.The is
+                    done in four steps:
                 <ol>
-                    <li>Load the image using skimage.io.imread.</li>
-                    <li>Apply a specified blur filter to the image (if requested) using skimage.filters. Possible
-                        options are Gaussian, median, bilateral, and total variation.</li>
-                    <li>Convert the blurred image to a binary image using skimage.filters.threshold_otsu.</li>
+                    <li>Apply a specified blur filter to the image using skimage.filters. Possible
+                        options are Gaussian, median, bilateral, and total variation. We choosing Gaussian based off of
+                        trying them and comparing the annotated images.</li>
+                    <li>Convert the blurred image to a binary image using skimage.filters.threshold_otsu. Threshold was
+                        also based off of trying values and comparing the annotated images.</li>
                     <li>Label connected components in the binary image and compute region properties for each object
-                        using measure.label and measure.regionprops respectively. Then, for each plant, plot a red
-                        circle on the centroid coordinates using matplotlib.pyplot.plot.</li>
+                        using measure.label and measure.regionprops respectively. </li>
+                    <li>For each plant, plot a red circle on the centroid coordinates using matplotlib.pyplot.plot.</li>
                 </ol>
                 </p>
                 <div class="image-container">
                     <div>
-                        <img src="./assets/img/annotateCenterOutput.png" alt="Image with red dots." width=400>
+                        <img src="./assets/img/annotateCenterOutput.png" alt="Image with red dots." height=400>
                         <div>Stage 2 Output</div>
                     </div>
                 </div>
@@ -279,21 +273,21 @@
                 <p class="lead mb-5">
                     TO DO
                 </p>
-                <img src="./assets/img/annotate.png" alt="Example image of stage two output." width=300>
-                <div>Stage 2 Output</div>
+                <!-- <img src="./assets/img/annotate.png" alt="Example image of stage two output." height=300>
+                <div>Stage 2 Output</div> -->
             </div>
         </section>
         <hr class="m-0" />
         <!-- Discussion-->
-        <section class="resume-section" id="Discussion">
+        <section class="resume-section" id="Improvements">
             <div class="resume-section-content">
-                <h2 class="mb-0">Discussion</h2>
-                <h3 class="mb-0">Challenges & Lessons</h3>
+                <h2 class="mb-0">Improvements</h2>
                 <p class="lead mb-5">
-                    TO DO
-                </p>
-                <p class="lead mb-5">
-                    TO DO
+                    One of the main limitation of our current set up is that we only train our model on four herbs, when in reality there are thousands of different herbs. At minimum it would be great to expand the model to at least cover all of the commonly used spices and herbs used world wide in cooking. This would make the application in the food industry much more useful.
+                    <br></br>
+                    In an ideal world, we would also use completely different images in training our model. Ideally we would have enough pre-labeled images of herb gardens that would allow us to segment the image and use the sub-images as the train and test set in our model as the model currently uses high quality images of the herbs usually against a white background, this doesn't match the segmented images we are feeding into the model for labeling.
+                    <br></br>
+                    Another challenge that we aim to tackle if time permits is to successfully segment the mixed leaf scenario and identify the plants. In reality, the image of a garden could contain the interleaved leaves into each other if plants are nearby. Current approach might find it difficult to segment this scenario into two or multiple separate images. Hence, it would be a challenging task to develop a model for identification of leaves in such a case.
                 </p>
             </div>
         </section>
