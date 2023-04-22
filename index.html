@@ -165,8 +165,12 @@
                     the false centers, would be preprocesses the points before clustering. The main approach would be to
                     filter the points by checking there pixel value and eliminate any that aren't green enough(most
                     likely noise instead of a plant part). We attempted to implement this preprocessing with trial/error
-                    but no success, would require more research.
-                    <br><br>
+                    but no success, would require more research. The most complex if not impossible part would be
+                    finding the value of the "green_value" in the image below; in theory it would be the average value
+                    of the leaf pixels.
+                </p>
+                <img src="./assets/img/filter.png">
+                <p class="lead mb-5">
                     Using the true centers found by the clustering, subimages are extracted to feed into the model. A
                     formula was created to find the size of the subimage output based on the input image size and the
                     number of objects detected in the image. A rectangle of the specified size is placed around each
@@ -322,11 +326,12 @@
                     For each x,y cordinate that indicates a plant center a box boundry is created using the following
                     formula:
                 </p>
-                <p><span class="math display">\[x_{min} = \max(0,x - \lfloor \frac{subimage_{size}}{2} \rfloor) \]</span>
+                <p><span class="math display">\[x_{min} = \max(0,x - \lfloor \frac{subimage_{size}}{2} \rfloor)
+                        \]</span>
                 </p>
                 <p><span class="math display">\[x_{max} = \min(image_{width},x + \lfloor \frac{subimage_{size}}{2}
                         \rfloor) \]</span></p>
-                <p><span class="math display">\[y_{min} = \max(0,y - \lfloor \frac{subimg_{size}}{2} \rfloor) \]</span>
+                <p><span class="math display">\[y_{min} = \max(0,y - \lfloor \frac{subimage_{size}}{2} \rfloor) \]</span>
                 </p>
                 <p><span class="math display">\[y_{max} = \min(image_{height},y + \lfloor \frac{subimage_{size}}{2}
                         \rfloor) \]</span></p>
