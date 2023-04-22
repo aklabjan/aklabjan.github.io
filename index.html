@@ -39,6 +39,7 @@
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Stage1">Stage 1</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Stage2">Stage 2</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Stage3">Stage 3</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Stage4">Stage 4</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Improvements">Improvements</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Resources">Resources</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#References">References</a></li>
@@ -271,10 +272,46 @@
             <div class="resume-section-content">
                 <h2 class="mb-0">Stage 3: Annotate True Centers</h2>
                 <p class="lead mb-5">
-                    TO DO
+                    In this stage, the "centers" found in stage 2 are processed using K-means to find the true center of
+                    each plant. This stage unfortunatly currently requires manual input for the value of K. In the
+                    future we would like to find a clustering method that does not require human input to find the
+                    optimal number of clusters.
                 </p>
                 <img src="./assets/img/centerOutput.png" alt="Example image of stage three output." height=400>
                 <div>Stage 3 Output</div>
+            </div>
+        </section>
+        <hr class="m-0" />
+        <!-- Stage 4-->
+        <section class="resume-section" id="Stage4">
+            <div class="resume-section-content">
+                <h2 class="mb-0">Stage 4: Extract Subimages Image</h2>
+                <p class="lead mb-5">
+                    In Stage 4 using the true centers found in stage 3, we extract surrounding pixels to create
+                    subimages of each plant.
+                </p>
+                <div>Stage 4 Output</div>
+                <table>
+                    <tr>
+                        <td><img src="assets/img/subsetImages/subset_0.png"></td>
+                        <td><img src="assets/img/subsetImages/subset_1.png"></td>
+                        <td><img src="assets/img/subsetImages/subset_2.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="assets/img/subsetImages/subset_3.png"></td>
+                        <td><img src="assets/img/subsetImages/subset_4.png"></td>
+                        <td><img src="assets/img/subsetImages/subset_5.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="assets/img/subsetImages/subset_6.png"></td>
+                        <td><img src="assets/img/subsetImages/subset_7.png"></td>
+                        <td><img src="assets/img/subsetImages/subset_8.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="assets/img/subsetImages/subset_9.png"></td>
+                        <td><img src="assets/img/subsetImages/subset_10.png"></td>
+                    </tr>
+                </table>
             </div>
         </section>
         <hr class="m-0" />
@@ -283,11 +320,22 @@
             <div class="resume-section-content">
                 <h2 class="mb-0">Improvements</h2>
                 <p class="lead mb-5">
-                    One of the main limitation of our current set up is that we only train our model on four herbs, when in reality there are thousands of different herbs. At minimum it would be great to expand the model to at least cover all of the commonly used spices and herbs used world wide in cooking. This would make the application in the food industry much more useful.
+                    One of the main limitation of our current set up is that we only train our model on four herbs, when
+                    in reality there are thousands of different herbs. At minimum it would be great to expand the model
+                    to at least cover all of the commonly used spices and herbs used world wide in cooking. This would
+                    make the application in the food industry much more useful.
                     <br></br>
-                    In an ideal world, we would also use completely different images in training our model. Ideally we would have enough pre-labeled images of herb gardens that would allow us to segment the image and use the sub-images as the train and test set in our model as the model currently uses high quality images of the herbs usually against a white background, this doesn't match the segmented images we are feeding into the model for labeling.
+                    In an ideal world, we would also use completely different images in training our model. Ideally we
+                    would have enough pre-labeled images of herb gardens that would allow us to segment the image and
+                    use the sub-images as the train and test set in our model as the model currently uses high quality
+                    images of the herbs usually against a white background, this doesn't match the segmented images we
+                    are feeding into the model for labeling.
                     <br></br>
-                    Another challenge that we aim to tackle if time permits is to successfully segment the mixed leaf scenario and identify the plants. In reality, the image of a garden could contain the interleaved leaves into each other if plants are nearby. Current approach might find it difficult to segment this scenario into two or multiple separate images. Hence, it would be a challenging task to develop a model for identification of leaves in such a case.
+                    Another challenge that we aim to tackle if time permits is to successfully segment the mixed leaf
+                    scenario and identify the plants. In reality, the image of a garden could contain the interleaved
+                    leaves into each other if plants are nearby. Current approach might find it difficult to segment
+                    this scenario into two or multiple separate images. Hence, it would be a challenging task to develop
+                    a model for identification of leaves in such a case.
                 </p>
             </div>
         </section>
