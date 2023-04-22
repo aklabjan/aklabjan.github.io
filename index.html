@@ -316,19 +316,19 @@
                     the number of plants in the image.
 
                 </p>
-                <p><span class="math display">\[output_{size} = \sqrt{\frac{input\_img_{height} *
-                        input\_img_{width}}{num\_of\_plants * 1.5}}\]</span></p>
+                <p><span class="math display">\[subimg_{size} = \sqrt{\frac{img_{height} *
+                        img_{width}}{num\_of\_plants * 1.5}}\]</span></p>
                 <p class="lead mb-5">
                     For each x,y cordinate that indicates a plant center a box boundry is created using the following
                     formula:
                 </p>
-                <p><span class="math display">\[x_{min} = \max(0,x - \lfloor \frac{output_{size}}{2} \rfloor) \]</span>
+                <p><span class="math display">\[x_{min} = \max(0,x - \lfloor \frac{subimg_{size}}{2} \rfloor) \]</span>
                 </p>
-                <p><span class="math display">\[x_{max} = \min(input\_img_{width},x + \lfloor \frac{output_{size}}{2}
+                <p><span class="math display">\[x_{max} = \min(img_{width},x + \lfloor \frac{subimg_{size}}{2}
                         \rfloor) \]</span></p>
-                <p><span class="math display">\[y_{min} = \max(0,y - \lfloor \frac{output_{size}}{2} \rfloor) \]</span>
+                <p><span class="math display">\[y_{min} = \max(0,y - \lfloor \frac{subimg_{size}}{2} \rfloor) \]</span>
                 </p>
-                <p><span class="math display">\[y_{max} = \min(input\_img_{height},y + \lfloor \frac{output_{size}}{2}
+                <p><span class="math display">\[y_{max} = \min(img_{height},y + \lfloor \frac{subimg_{size}}{2}
                         \rfloor) \]</span></p>
                 <p class="lead mb-5">
                     The box boundries are used to extract the subimages.
