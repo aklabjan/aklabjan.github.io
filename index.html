@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
+<script type="text/javascript" async=""
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
 
 <head>
     <meta charset="utf-8" />
@@ -35,7 +36,8 @@
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#TheProblem">The Problem</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#StateOfTheArt">Current State Of The
                         Art</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Approach/Novelty">Our Approach</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Approach/Novelty">Our Approach</a>
+                </li>
                 <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Implementation">Implementation
                         Overview</a></li> -->
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Stage1">Stage 1</a></li>
@@ -293,8 +295,8 @@
                 <h2 class="mb-0">Stage 3: Annotate True Centers</h2>
                 <p class="lead mb-5">
                     In this stage, the "centers" found in stage 2 are processed using K-means to find the true center of
-                    each plant. This stage unfortunatly currently requires manual input for the value of K. In the
-                    future we would like to find a clustering method that does not require human input to find the
+                    each plant. Unfortunately, this stage currently requires manual input for the value of K. In the
+                    future, we would like to find a clustering method that does not require human input to determine the
                     optimal number of clusters.
                 </p>
                 <img src="./assets/img/centerOutput.png" alt="Example image of stage three output." height=400>
@@ -310,19 +312,26 @@
                     In Stage 4 using the true centers found in stage 3, we extract surrounding pixels to create
                     subimages of each plant.
 
-                    The formula used to calculate the size of the subimages is based off of the original image size and the number of plants in the image.
-                
+                    The formula used to calculate the size of the subimages is based off of the original image size and
+                    the number of plants in the image.
+
                 </p>
-                <p><span class="math display">\[output_{size} = \sqrt{\frac{input\_img_{height} * input\_img_{width}}{num\_of\_plants * 1.5}}\]</span></p>
+                <p><span class="math display">\[output_{size} = \sqrt{\frac{input\_img_{height} *
+                        input\_img_{width}}{num\_of\_plants * 1.5}}\]</span></p>
                 <p class="lead mb-5">
-                    For each x,y cordinate that indicates a plant center a box boundry is created using the following formula:
+                    For each x,y cordinate that indicates a plant center a box boundry is created using the following
+                    formula:
                 </p>
-                <p><span class="math display">\[x_{min} = \max(0,x - \lfloor \frac{output_{size}}{2} \rfloor) \]</span></p>
-                <p><span class="math display">\[x_{max} = \min(input\_img_{width},x + \lfloor \frac{output_{size}}{2} \rfloor) \]</span></p>
-                <p><span class="math display">\[y_{min} = \max(0,y - \lfloor \frac{output_{size}}{2} \rfloor) \]</span></p>
-                <p><span class="math display">\[y_{max} = \min(input\_img_{height},y + \lfloor \frac{output_{size}}{2} \rfloor) \]</span></p>
+                <p><span class="math display">\[x_{min} = \max(0,x - \lfloor \frac{output_{size}}{2} \rfloor) \]</span>
+                </p>
+                <p><span class="math display">\[x_{max} = \min(input\_img_{width},x + \lfloor \frac{output_{size}}{2}
+                        \rfloor) \]</span></p>
+                <p><span class="math display">\[y_{min} = \max(0,y - \lfloor \frac{output_{size}}{2} \rfloor) \]</span>
+                </p>
+                <p><span class="math display">\[y_{max} = \min(input\_img_{height},y + \lfloor \frac{output_{size}}{2}
+                        \rfloor) \]</span></p>
                 <p class="lead mb-5">
-                    The box boundries are used to extract the subimages. 
+                    The box boundries are used to extract the subimages.
                 </p>
                 <div>Stage 4 Output</div>
                 <table>
