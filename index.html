@@ -169,7 +169,7 @@
                     finding the value of the "green_value" in the image below; in theory it would be the average value
                     of the leaf pixels.
                 </p>
-                <img src="./assets/img/filter.png">
+                <img src="./assets/img/filter.png" width = 500>
                 <p class="lead mb-5">
                     Using the true centers found by the clustering, subimages are extracted to feed into the model. A
                     formula was created to find the size of the subimage output based on the input image size and the
@@ -303,8 +303,12 @@
                     future, we would like to find a clustering method that does not require human input to determine the
                     optimal number of clusters.
                 </p>
-                <img src="./assets/img/centerOutput.png" alt="Example image of stage three output." height=400>
-                <div>Stage 3 Output</div>
+                <div class="image-container">
+                    <div>
+                        <img src="./assets/img/centerOutput.png" alt="Example image of stage three output." height=400>
+                        <div>Stage 3 Output</div>
+                    </div>
+                </div>
             </div>
         </section>
         <hr class="m-0" />
@@ -331,35 +335,40 @@
                 </p>
                 <p><span class="math display">\[x_{max} = \min(image_{width},x + \lfloor \frac{subimage_{size}}{2}
                         \rfloor) \]</span></p>
-                <p><span class="math display">\[y_{min} = \max(0,y - \lfloor \frac{subimage_{size}}{2} \rfloor) \]</span>
+                <p><span class="math display">\[y_{min} = \max(0,y - \lfloor \frac{subimagegit _{size}}{2} \rfloor)
+                        \]</span>
                 </p>
                 <p><span class="math display">\[y_{max} = \min(image_{height},y + \lfloor \frac{subimage_{size}}{2}
                         \rfloor) \]</span></p>
                 <p class="lead mb-5">
                     The box boundries are used to extract the subimages.
                 </p>
-                <div>Stage 4 Output</div>
-                <table>
-                    <tr>
-                        <td><img src="assets/img/subsetImages/subset_0.png" width=200></td>
-                        <td><img src="assets/img/subsetImages/subset_1.png" width=200></td>
-                        <td><img src="assets/img/subsetImages/subset_2.png" width=200></td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/img/subsetImages/subset_3.png" width=200></td>
-                        <td><img src="assets/img/subsetImages/subset_4.png" width=200></td>
-                        <td><img src="assets/img/subsetImages/subset_5.png" width=200></td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/img/subsetImages/subset_6.png" width=200></td>
-                        <td><img src="assets/img/subsetImages/subset_7.png" width=200></td>
-                        <td><img src="assets/img/subsetImages/subset_8.png" width=200></td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/img/subsetImages/subset_9.png" width=200></td>
-                        <td><img src="assets/img/subsetImages/subset_10.png" width=200></td>
-                    </tr>
-                </table>
+                <div class="image-container">
+                    <div>
+                        <div>Stage 4 Output</div>
+                        <table>
+                            <tr>
+                                <td><img src="assets/img/subsetImages/subset_0.png" width=200></td>
+                                <td><img src="assets/img/subsetImages/subset_1.png" width=200></td>
+                                <td><img src="assets/img/subsetImages/subset_2.png" width=200></td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/img/subsetImages/subset_3.png" width=200></td>
+                                <td><img src="assets/img/subsetImages/subset_4.png" width=200></td>
+                                <td><img src="assets/img/subsetImages/subset_5.png" width=200></td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/img/subsetImages/subset_6.png" width=200></td>
+                                <td><img src="assets/img/subsetImages/subset_7.png" width=200></td>
+                                <td><img src="assets/img/subsetImages/subset_8.png" width=200></td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/img/subsetImages/subset_9.png" width=200></td>
+                                <td><img src="assets/img/subsetImages/subset_10.png" width=200></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
         </section>
         <hr class="m-0" />
