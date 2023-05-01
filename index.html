@@ -149,37 +149,31 @@
                     each individual plant and annotate it on the original image. To do this, we will convert the herb
                     garden image to grayscale, perform some noise removal, compute the edges/boundaries, and then
                     compute the "centers" of each object detected by the edges. Through implementation we found this
-                    detected individual leaves more than plants as a whole. Thus leading us to the conclusion we will
+                    detected individual leaves more than plants as a whole(reference stage 2). Thus leading us to the
+                    conclusion we will
                     need to perform some type of clustering.
                     <br><br>
-                    Clustering will be used to find the true center of each plant instead of the noise and leaves. For
-                    clustering, the goal was to find an algorithm that did not involve human input like k-means which
-                    requires K to be specified. We considered several clustering algorithms including Hierarchical
-                    clustering. The caviet was even though there is no original specified number of clusters, you would
-                    have to identify a criteria on how to decide where to split the clusters in the hierarchy. For the
-                    purpose of time we used K-means and predefined K based on manual inspection of each test image. If
-                    there was additonal time we would create our own clustering algorith, one that would use the number
-                    of points within an area (dense areas are likely plants due to many leaves) as well as distance
-                    between these dense areas to identity one plant from another. Creating our own clustering algorithm
-                    would hopefully elimate the false centers that aren't plants but noise. Another method to elimate
-                    the false centers, would be preprocesses the points before clustering. The main approach would be to
-                    filter the points by checking there pixel value and eliminate any that aren't green enough(most
-                    likely noise instead of a plant part). We attempted to implement this preprocessing with trial/error
-                    but no success, would require more research. The most complex if not impossible part would be
-                    finding the value of the "green_value" in the image below; in theory it would be the average value
-                    of the leaf pixels.
-                </p>
-                <img src="./assets/img/filter.png" width = 700>
-                <p class="lead mb-5">
+                    For the clusters, we choose to use K-Means to identify the true plant centers from the noisy output
+                    provided by Stage 2. In an ideal world we would like to avoid the need for human input of the value
+                    “K” but for the time permitted using k-means provided the best possible results. We considered
+                    several clustering algorithms including hierarchical clustering. The caveat was even though there is
+                    no original specified number of clusters, you would have to identify a criteria on how to decide
+                    where to split the clusters in the hierarchy. For our algorithm we predefined K based on manual
+                    inspection of each test image declaring K to be the number of distinct plants visible. Using the
+                    output from k-means we have the coordinates of what our algorithm believes the true plant centers
+                    are. When plotted on the original image we find that the true plants are mostly identified although
+                    there are some plant pots and container edges detected that create noise, a falsely identified
+                    plant.
+                    <br><br>
                     Using the true centers found by the clustering, subimages are extracted to feed into the model. A
                     formula was created to find the size of the subimage output based on the input image size and the
                     number of objects detected in the image. A rectangle of the specified size is placed around each
                     center thus creating the boundaries of the subimage.
                     <br><br>
-                    Finally, these segmented image for identified plants would be sent to the classification model to
-                    predict the type of plant. Each image will then be labelled as one of the possible plants as
-                    discussed previously, or unidentifiable herb if the confidence score for the prediction is lower
-                    than a pre-determined threshold.
+                    Finally, these segmented image for identified plants are sent to the classification model to predict
+                    the type of plant. Each image is then labelled as one of the possible plants as discussed
+                    previously, or unidentifiable herb if the confidence score for the prediction is lower than a
+                    pre-determined threshold.
                 </p>
                 <h3 class="mb-0">Dataset</h3>
                 <p class="lead mb-5">For this project, we were unable to find an already existing dataset. Therefore, we
@@ -188,10 +182,13 @@
                     herb types: parsley, thyme, chives, and oregano, and split the set into 90% and 10% to train &
                     test.
                     <br><br>
-                    For the final test set we will be pulling 20-30 images of herb gardens. We will manually label these
-                    images to test the prediction of our trained model in presence of multiple herbs in a single image.
-                    Our main goal is to segment these herb garden images to segment into different herb-leaves region
-                    and then predict their type in the image and label them.
+                    For the final test set we extracted 20 images of herb gardens. These images were pulled from
+                    Instagram as it was a good source of images that resembled the real world input our project is
+                    intended for. Creating our own dataset was a big hurdle. In order to eliminate the possibility of
+                    incorrectly labeling a plant in the test set when compared to the output from our program we
+                    selected images that included labels by the garden. Although this is flawed and has the potential to
+                    be incorrectly labeled, we made the assumption the gardener labeled it based on the label of the
+                    seed packaging or store label.
                 </p>
             </div>
         </section>
@@ -347,23 +344,24 @@
                         <div>Stage 4 Output</div>
                         <table>
                             <tr>
-                                <td><img src="assets/img/subsetImages/subset_0.png" width=200 height = 200></td>
-                                <td><img src="assets/img/subsetImages/subset_1.png" width=200 height = 200></td>
-                                <td><img src="assets/img/subsetImages/subset_2.png" width=200 height = 200 object-fit = contain></td>
+                                <td><img src="assets/img/subsetImages/subset_0.png" width=200 height=200></td>
+                                <td><img src="assets/img/subsetImages/subset_1.png" width=200 height=200></td>
+                                <td><img src="assets/img/subsetImages/subset_2.png" width=200 height=200
+                                        object-fit=contain></td>
                             </tr>
                             <tr>
-                                <td><img src="assets/img/subsetImages/subset_3.png" width=200 height = 200></td>
-                                <td><img src="assets/img/subsetImages/subset_4.png" width=200 height = 200></td>
-                                <td><img src="assets/img/subsetImages/subset_5.png" width=200 height = 200></td>
+                                <td><img src="assets/img/subsetImages/subset_3.png" width=200 height=200></td>
+                                <td><img src="assets/img/subsetImages/subset_4.png" width=200 height=200></td>
+                                <td><img src="assets/img/subsetImages/subset_5.png" width=200 height=200></td>
                             </tr>
                             <tr>
-                                <td><img src="assets/img/subsetImages/subset_6.png" width=200 height = 200></td>
-                                <td><img src="assets/img/subsetImages/subset_7.png" width=200 height = 200></td>
-                                <td><img src="assets/img/subsetImages/subset_8.png" width=200 height = 200></td>
+                                <td><img src="assets/img/subsetImages/subset_6.png" width=200 height=200></td>
+                                <td><img src="assets/img/subsetImages/subset_7.png" width=200 height=200></td>
+                                <td><img src="assets/img/subsetImages/subset_8.png" width=200 height=200></td>
                             </tr>
                             <tr>
-                                <td><img src="assets/img/subsetImages/subset_9.png" width=200 height = 200></td>
-                                <td><img src="assets/img/subsetImages/subset_10.png" width=200 height = 200></td>
+                                <td><img src="assets/img/subsetImages/subset_9.png" width=200 height=200></td>
+                                <td><img src="assets/img/subsetImages/subset_10.png" width=200 height=200></td>
                             </tr>
                         </table>
                     </div>
