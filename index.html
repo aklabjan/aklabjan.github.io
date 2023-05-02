@@ -342,7 +342,32 @@
             <div class="resume-section-content">
                 <h2 class="mb-0">Findings/Attempts</h2>
                 <p class="lead mb-5">
-                   
+                    Throughout the entire process of extracting the plant sub images there was and still is a need to
+                    improve noise removal. There was basic noise removal in stage 2 using gaussian blur as well as a
+                    threshold for converting to a binary image. This was not enough and still produced lots of noise in
+                    the output of stage 2 where dots were present on non-leaf areas. The following are two attempted
+                    approaches to handle this noise although both failed/would require more investigating.
+                    <br></br>
+                    The first attempt was to filter the output produced by Stage 2 before being used as input for
+                    K-Means in stage 2. The thought behind this approach is that the dots associated with an actual
+                    plant would be some variety of green meanwhile the points that are not part of plant, like a pot or
+                    a pole is unlikely to resemble the green color of plant leaves. The following is a rough outline of
+                    how the filter would work:
+                </p>
+                <img src="./assets/img/filter.png" width=700>
+                <p class="lead mb-5">
+                    Given a (X, Y) coordinate from stage 2 output, it looks up the pixel value in the image, computes
+                    the distance to some predetermined value(green_color) and checks if the distance is within a
+                    threshold, indicating that the pixel value is close enough to being the color of a leaf. If it meets
+                    the threshold then the point should be used in the Stage 3 clustering computation otherwise it
+                    should be filtered out.
+                    <br></br>
+                    The main caveat of this approach is that is requires a better way of determining the value of the
+                    variable green_color. In an ideal world, the value of green_color would be the average value of all
+                    the pixels in the image corresponding to being part of a plant. This value is unlikely to be uniform
+                    across multiple images as there are many variable such as lighting that can impact this value from
+                    image to image. There would need to be farther research into determining the correct value to get
+                    this filter to do what it is intended to.
                 </p>
             </div>
         </section>
