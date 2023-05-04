@@ -264,8 +264,11 @@
                 <p class="lead mb-5">
                     In this stage, the "centers" found in stage 2 are processed using K-means to find the true center of
                     each plant. Unfortunately, this stage currently requires manual input for the value of K. In the
-                    future, we would like to find a clustering method that does not require human input to determine the
-                    optimal number of clusters.
+                    future, we would like to use a clustering method that does not require human input to determine the
+                    optimal number of clusters. X-Means is one such algorithm[6]. Due to the current noise after stage 2
+                    X-Means does not perform well so we are using K-Means for better results from the segmentation. If
+                    we can filter out the noise I believe replacing K-means with X-means would lead to good results and
+                    no human input.
                 </p>
                 <div class="image-container">
                     <div>
@@ -484,6 +487,20 @@
                             "Remove Text from Images Using cv2 and Keras-ocr." <em>Towards Data Science</em>. Accessed
                             April 19, 2023. <a
                                 href="https://towardsdatascience.com/remove-text-from-images-using-cv2-and-keras-ocr-24e7612ae4f4">https://towardsdatascience.com/remove-text-from-images-using-cv2-and-keras-ocr-24e7612ae4f4</a>.
+                        </div>
+                    </li>
+                    <li>
+                        <div id="ref-1" class="csl-entry" role="doc-biblioentry">
+                            "Deep leaf: Mask R-CNN based leaf detection and segmentation from digitized herbarium
+                            specimen images." <em>Pattern Recognition Letters</em>, vol. 150, no. 1, 2021, pp. 88-95. <a
+                                href="https://doi.org/10.1016/j.patrec.2021.07.003">https://doi.org/10.1016/j.patrec.2021.07.003</a>.
+                        </div>
+                    </li>
+                    <li>
+                        <div id="ref-2" class="csl-entry" role="doc-biblioentry">
+                            Novikov, A., 2019. PyClustering: Data Mining Library. <em>Journal of Open Source
+                                Software</em>, 4(36), p.1230. Available at: <a
+                                href="http://dx.doi.org/10.21105/joss.01230">http://dx.doi.org/10.21105/joss.01230</a>.
                         </div>
                     </li>
                 </ol>
