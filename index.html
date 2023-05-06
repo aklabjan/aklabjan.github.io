@@ -43,10 +43,13 @@
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Stage2">Stage 2</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Stage3">Stage 3</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Stage4">Stage 4</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#findings">Findings/Attempts</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Stage5">Stage 5</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Stage6">Stage 6</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#results">Results</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Improvements">Improvements</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Resources">Resources</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Findings">Findings/Attempts</a></li>
+                
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Improvements">Future Improvements</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Resources">Resources/Links</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#References">References</a></li>
             </ul>
         </div>
@@ -183,8 +186,35 @@
             <div class="resume-section-content">
                 <h2 class="mb-0"><span class="text-primary">Dataset</span></h2>
                 <p class="lead mb-5">
-                    TO DO
-                    <!-- For this project, we were unable to find an already existing dataset. Therefore, we
+                    <br>Creating a dataset for common herbs is a challenging task, primarily because of the difficulty in finding suitable images. While scraping images from the internet may seem like an easy solution, it poses several issues that can affect the quality and accuracy of the dataset. Some of the most common issues include:
+                    <ul>
+                    <li>Low-quality images: Images of low resolution or poor quality can make it challenging to discern the details of the herb or plant. This can result in inaccurate classification or recognition of the herb by machine learning models.</li>
+                    <li>Misleading images: Images of processed herbs or herb products such as dried leaves or herbs in jars may not provide the full context of the herb as a plant, making it difficult to train a model to recognize the plant as a whole.</li>
+                    <li>Repetitive and incorrect search results: Scraping images off the internet can result in repetitive and incorrect search results that do not provide the required diversity and quality of images.</li>
+                    </ul>
+                </br>
+                <br>To overcome these challenges, one approach to creating a reliable dataset for common herbs is capturing real bush images. However, this may not always be practical due to limited access to farms or fields. An alternative approach is to obtain stock images via scraping Google images. However, as we discussed, this process requires careful curation and filtering to ensure that the images are of high quality and suitable for the dataset. 
+                </br>
+                <br>
+                </br>
+                <br>Gathering and refining data manually for each herb is a time-consuming process that requires significant effort. Additionally, pre-processing of the images is required to ensure uniformity and consistency of the dataset. This is particularly important when dealing with bad quality images that may include low-resolution images or misleading herb images.
+                </br>
+                <br>We therefore scraped images off google images and stock images from different websites. As mentioned above, it required manual efforts to create a usable dataset out of these imgaes. However, due to these constraints, the size of dataset couldn't be made big, hence limiting the scope of training more accurate models. To illustrate the challenges involved in creating a dataset for common herbs, we have provided two sample images below. The first image shows a low-resolution Oregano bush, while the second image shows a jar of Oregano. These images demonstrate the kind of unusable images that can result from scraping images off the internet. 
+                 </br>
+                <div class="image-container">
+                    <div>
+                        <img src="./assets/img/lowres-oregano.jpeg" alt="Low-Resolution Oregano Bush" height="150" width="250">
+                        <div>Low-Resolution Oregano Bush</div>
+                    </div>
+                    <div>
+                        <img src="./assets/img/jar-oregano.png" alt="Incorrect image returned as Oregano Jar instead of Oregano Bush" height="150">
+                        <div>Oregano Jar</div>
+                    </div>
+                </div>
+                <br>
+                Our final dataset contains about 1000 plant bush images for each of the four chosen herbs (Oregano, Parsley, Thyme, and Chives). These images are further divided into Train and test datasets for training our classifier model to identify the type of bush passed to it. Another set of images that we have kept separately, sourced from sources like instagram, which contain different plant herb bushes in a single image and are also labelled. These images would help us test the final result of our tool end to end. However, such images are difficult to locate, and hence are very few just for testing purpose. It has to be noted that, these images are not part of train/validation dataset, and are totally new data fed into our tool for obtaining results.
+                </br>
+    <!-- For this project, we were unable to find an already existing dataset. Therefore, we
                     will be creating our own dataset for the training & testing of model from Google Images. To create
                     the training & testing set we will pull 500-1000 images from Google Images for each of our four
                     herb types: parsley, thyme, chives, and oregano, and split the set into 90% and 10% to train &
@@ -338,18 +368,99 @@
                 </div>
             </div>
         </section>
+<hr class="m-0" />
+<!-- Stage 5-->
+        <section class="resume-section" id="Stage5">
+            <div class="resume-section-content">
+                <h2 class="mb-0"><span class="text-primary">Stage 5 </span> Predict type of herb using a CNN model</h2>
+                <p class="lead mb-5">
+                   <br>
+                    In this stage, we feed the segmented images from previous stage as an input to our trained custom CNN model. We trained our machine learning model on each plant's image in our dataset separately, rather than combined images. We also tried to use transfer learning on a pre-trained model by fine-tuning it over our new dataset. Specifically, we attempted to use the MobileNet architecture, which has showed promise in previous classification studies. However, we encountered issues with this approach as the MobileNet model resulted in overfitting on our dataset. This means that while the model achieved high accuracy during training (up to 99.8%), it failed to generalize to new images. This is a common problem when using complex models on small datasets.
+                    </br>
+<br>
+To address this issue, we decided to redeclare a new CNN (Convolutional Neural Network) model with fewer layers (approximately 9 layers). This helped to solve the overfitting problem to some extent and improved the model's ability to generalize to new herb bush images.
+</br>
+<div class="image-container">
+                    <div>
+                        <div>Custom CNN Model layers</div>
+                            <tr>
+                                <td><img src="assets/img/cnn.png" height=200></td>
+                                
+                            </tr>
+
+                    </div>
+                </div>
+<br>
+Our model provides softmax probabilities for each class, which allows us to label an image as one of the known herb plants or label it as unidentified if the probability is below a set threshold. This gives us greater flexibility in how we use the model and allows us to detect previously unseen herb plants. The classes for model can easily be expanded and the model can also be re-trained over new herb plants based on available dataset.
+</br>
+<br>
+Overall, our new CNN model provides better prediction for new herb bush images and shows promise in herb recognition. By leveraging our unique dataset of common herb plants, we are able to train a model that is tailored to our specific needs and can provide better classification of herbs in real-world scenarios.
+</br>
+                    
+                </p>
+    
+            </div>
+        </section>
+
+<!-- Stage 6-->
+        <section class="resume-section" id="Stage6">
+            <div class="resume-section-content">
+                <h2 class="mb-0"><span class="text-primary">Stage 6</span> Labelling Predicted herbs in Cluster</h2>
+                <p class="lead mb-5">
+                   <br>
+                    In the concluding phase, we utilize the softmax probabilities generated by the CNN model for each sub-image in the previous stage as the input. The class with the highest softmax probability determines the final label for each sub-image. If the maximum probability value falls below a certain threshold, the label is designated as "Undefined". After extracting these labels, we draw a bounding box around each herb cluster in the original image and annotate them with the generated labels. The bounding box information is directly passed on to this stage from Stage-4, and Probabilities from Stage-5. The final output for this stage is shown in the next section (Results).
+                    </br>
+                    
+                </p>
+    
+            </div>
+        </section>
+<hr class="m-0" />
+        <!-- Results-->
+        <section class="resume-section" id="results">
+            <div class="resume-section-content">
+                <h2 class="mb-0"><span class="text-primary">Results</span></h2>
+                <p class="lead mb-5">
+                    <table>
+                            <tr>
+                                <td>
+                        <img src="./assets/img/res/input.png" alt="Labeled input test image for mixed herbs" width="250">
+                        <div>Pre-labeled input test image for mixed herbs</td>
+                    
+                        <td><img src="./assets/img/res/ocr.png" alt="Labeled removed input test image" width="250">
+                        <div>Labels removed using ocr techniques</div>
+                            </td>
+                   <tr><td>
+                        <img src="./assets/img/res/center.png" alt="Centers annotated on test image" width="250">
+                        <div>Centers annotated for each detected plant</div>
+                    </td>
+                    <td>
+                       <img src="./assets/img/res/final.png" alt="Final Result" width="250">
+                        <div>Final result labelling each detected herb</div>
+                       </td>        
+                        
+                </tr>
+                </table>
+                </p>
+            </div>
+        </section>
+
+
         <hr class="m-0" />
         <!-- Findings-->
         <section class="resume-section" id="Findings">
             <div class="resume-section-content">
                 <h2 class="mb-0"><span class="text-primary">Findings/Attempts</span></h2>
                 <p class="lead mb-5">
-                    Throughout the project, a need to improve noise removal in the process of extracting plant
+                    Creating a dataset for common herbs is a challenging task, primarily because of the difficulty in finding suitable images. We encountered low-quality images, misleading images, as well as incorrect and repetitve search results. Hence, a manual inspection and curation of the dataset was essential. This was a very time consuming task which took a major chunk of timeline.
+                     <br></br>
+                     
+                   Once the dataset creation was completed, we proceeded with the image processing segment of  our project. A need to improve noise removal in the process of extracting plant
                     sub-images was identified. In stage 2, basic noise removal was performed using Gaussian blur and
                     thresholding to convert the image to a binary format. However, this approach produced a significant
                     amount of noise in the output, including dots on non-leaf areas.
                     <br></br>
-                    Two attempts were made to address this issue, but both failed and require further investigation. The
+                    Two attempts were made to address this issue, but both failed and required further investigation. The
                     first approach involved filtering the output produced by Stage 2 before using it as input for
                     K-Means in Stage 3. The idea behind this approach was to identify dots associated with actual plants
                     by looking for some variety of green color, while ignoring dots that were unlikely to be part of a
@@ -395,41 +506,33 @@
                     sub-image. Although a lot of information was present in these histograms, there were no distinct
                     features that stood out.
                 </p>
-            </div>
-        </section>
-        <hr class="m-0" />
-        <!-- Results-->
-        <section class="resume-section" id="results">
-            <div class="resume-section-content">
-                <h2 class="mb-0"><span class="text-primary">Results</span></h2>
-                <p class="lead mb-5">
-                    TO DO
-                </p>
+<p class="lead mb-5">
+The classification is performed by a trained CNN model over our generated dataset. We  tried to use transfer learning on a pre-trained model (Mobilenet) by fine-tuning it over our new dataset. However, we encountered issues with this approach as the MobileNet model resulted in overfitting on our dataset. It achieved high training accuracy but it failed to generalize to new images. This is a common problem when using complex models on small datasets. Hence, we created a custom CNN model based on the existing classification architectures which was better suited for our small dataset. This helped us solve the overfitting problem to some extent and improved the model's ability to generalize to new herb bush images providing better classification accuracy. 
+</p>
             </div>
         </section>
         <hr class="m-0" />
         <!-- Discussion-->
         <section class="resume-section" id="Improvements">
             <div class="resume-section-content">
-                <h2 class="mb-0"><span class="text-primary">Improvements</span></h2>
+                <h2 class="mb-0"><span class="text-primary">Future Improvements</span></h2>
                 <p class="lead mb-5">
-                    TO DO
-                    <!-- One of the main limitation of our current set up is that we only train our model on four herbs, when
+                    <ul>
+                    <li>One of the main limitation of our current set up is that we only train our model on four herbs, when
                     in reality there are thousands of different herbs. At minimum it would be great to expand the model
                     to at least cover all of the commonly used spices and herbs used world wide in cooking. This would
                     make the application in the food industry much more useful.
+                    </li>
                     <br></br>
-                    In an ideal world, we would also use completely different images in training our model. Ideally we
-                    would have enough pre-labeled images of herb gardens that would allow us to segment the image and
-                    use the sub-images as the train and test set in our model as the model currently uses high quality
-                    images of the herbs usually against a white background, this doesn't match the segmented images we
-                    are feeding into the model for labeling.
+                        <li>To improve the robustness of our CNN model for herb classification, it would be ideal to have a more diverse dataset with completely different images. An annotated dataset with pre-labeled images of herb gardens would allow us to segment the images and use sub-images as the train and test set in our model, enabling us to train more robust CNN models or even utilize R-CNNs for classification. However, creating such a dataset can be challenging and time-consuming. Despite these challenges, having a more diverse and annotated dataset would greatly enhance the accuracy and reliability of our herb classification models.</li>
+                    
                     <br></br>
-                    Another challenge that we aim to tackle if time permits is to successfully segment the mixed leaf
-                    scenario and identify the plants. In reality, the image of a garden could contain the interleaved
-                    leaves into each other if plants are nearby. Current approach might find it difficult to segment
-                    this scenario into two or multiple separate images. Hence, it would be a challenging task to develop
-                    a model for identification of leaves in such a case. -->
+            <li>Exploring better ways to determine the true centers of plants in order to avoid noisy segmentations. This will help ensure that our models are accurately recognizing and classifying the plants in the images. We also plan to explore methods for determining the actual number of plants in the image and segmenting them, which could be achieved using R-CNNs instead of traditional computer vision algorithms. However, this will require a curated annotated dataset, which will need to be created.</li>
+            <br></br>
+            <li>
+                    In the future, we could explore the challenge of segmenting mixed herb plant images and accurately identifying each plant. This challenge is significant as mixed herb plant images are common in real-world scenarios. Successfully segmenting mixed herb plant images and identifying the different plants in such scenarios would require exploring various techniques for image segmentation and developing models that can recognize the unique features of each plant. By developing a model that can accurately identify the different plants in mixed images, we can improve the robustness of our herb classification models and enable them to recognize and classify herbs accurately even in complex real-world scenarios.
+                </li>
+            </ul>
                 </p>
             </div>
         </section>
