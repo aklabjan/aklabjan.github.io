@@ -17,6 +17,10 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+    <style>td {
+  border-right: solid 1px #f00; 
+  border-left: solid 1px #f00;
+}</style>
 </head>
 
 <body id="page-top">
@@ -447,6 +451,7 @@ Overall, our new CNN model provides better prediction for new herb bush images a
             <div class="resume-section-content">
                 <h2 class="mb-0"><span class="text-primary">Results</span></h2>
                 <p class="lead mb-5">
+                    Our results show the complete pipeline of our herb classification system. Starting with the input image of a herb garden with mixed herb plants, our system removes any text labels that may be present using the method described in Stage-1. Once the labels have been removed the next stage involves getting the centers of each herb cluster to create subimages. As described in the previous sections the true centers of each herb cluster are annotated after which we obtain subimages that are fed into the CNN model. For each of the sub-image, the CNN model predicts it's label. Bounding boxes are drawn around each herb cluster in the original image using the coordinates obtained during the subimage creation phase. The generated labels by the CNN Model are used to correlate back to the original herb garden image giving the final annotated labelled image.
                     <table>
                             <tr>
                                 <td>
